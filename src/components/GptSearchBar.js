@@ -60,7 +60,7 @@ function GptSearchBar() {
 
   const handleGptSearch = async () => {
     if (!SearchText.current.value.trim()) {
-      setError("Enter a right prompt");
+      setError("Please try after some Time ");
       setTimeout(() => setError(null), 3000);
       return;
     }
@@ -90,7 +90,7 @@ function GptSearchBar() {
       const gptMovies = result.response.text().replace(/\n/g, "").split(",").filter(movie => movie.trim());
       
       if (gptMovies.length === 0) {
-        setError("Enter a right prompt");
+        setError("Please try after some Time ");
         setTimeout(() => setError(null), 3000);
         setIsLoading(false);
         return;
@@ -102,7 +102,7 @@ function GptSearchBar() {
       // Filter out empty results
       const hasResults = tmdbResults.some(result => result && result.length > 0);
       if (!hasResults) {
-        setError("Enter a right prompt");
+        setError("Please try after some Time ");
         setTimeout(() => setError(null), 3000);
         setIsLoading(false);
         return;
@@ -114,7 +114,7 @@ function GptSearchBar() {
       dispatch(addMovieResults(tmdbResults));
     } catch (error) {
       console.error("GPT Search failed:", error);
-      setError("Enter a right prompt");
+      setError("Please try after some Time ");
       setTimeout(() => setError(null), 3000);
     } finally {
       setIsLoading(false);

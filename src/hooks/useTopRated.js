@@ -8,7 +8,7 @@ function useTopRated() {
   const toprated = useSelector((store) => store.movies.topRated);
   useEffect(() => {
     !toprated && getTopRatedMovie();
-  }, []);
+  }, [toprated]);
 
   const getTopRatedMovie = async () => {
     const data = await fetch(
